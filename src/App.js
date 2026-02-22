@@ -33,12 +33,12 @@ const STYLES = `
     --bg: #f4f7fb;
     --surface: #ffffff;
     --card: #ffffff;
-    --border: #d5dce8;
+    --border: #c7d2e2;
     --accent: #2563eb;
     --accent2: #0ea5a4;
     --accent3: #d97706;
-    --text: #0f172a;
-    --muted: #475569;
+    --text: #0b1220;
+    --muted: #334155;
     --danger: #dc2626;
     --success: #059669;
     --glow: 0 0 28px rgba(37,99,235,0.18);
@@ -115,6 +115,30 @@ const STYLES = `
     background: rgba(26,26,40,0.7);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  [data-theme="light"] .glass {
+    background: rgba(255,255,255,0.95);
+    border: 1px solid #c7d2e2;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+  }
+
+  [data-theme="light"] .btn-secondary {
+    background: #ffffff;
+    border-color: #c7d2e2;
+    color: #0b1220;
+  }
+
+  [data-theme="light"] .tag {
+    border: 1px solid #d7dfeb;
+    background: #f8fbff;
+  }
+
+  [data-theme="light"] input,
+  [data-theme="light"] select {
+    background: #ffffff !important;
+    color: #0b1220 !important;
+    border-color: #c7d2e2 !important;
   }
 
   .tag {
@@ -414,7 +438,7 @@ function FitBounds({ points }) {
   return null;
 }
 
-function MapScreen({ employees, onBack }) {
+function MapScreen({ employees, onBack, theme }) {
   const [hovered, setHovered] = useState(null);
 
   const cityMap = {};
@@ -454,7 +478,9 @@ function MapScreen({ employees, onBack }) {
               style={{ width:"100%", height:"100%", background:"var(--bg)" }}
             >
               <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                url={theme === "light"
+                  ? "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                  : "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"}
                 attribution='&copy; OpenStreetMap contributors &copy; CARTO'
               />
               <FitBounds points={mapped.map(c => c.geo)} />
@@ -1033,7 +1059,7 @@ export default function App() {
     />
   );
   if (screen === "chart") currentScreen = <BarChartScreen employees={employees} onBack={() => setScreen("list")} />;
-  if (screen === "map") currentScreen = <MapScreen employees={employees} onBack={() => setScreen("list")} />;
+  if (screen === "map") currentScreen = <MapScreen employees={employees} onBack={() => setScreen("list")} theme={theme} />;
   if (screen === "details") currentScreen = (
     <DetailsPage
       employee={selected}
