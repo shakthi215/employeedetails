@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Employee Hub - ReactJS Assessment Submission
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+Employee Hub is a React application built for the assessment flow with production-style structure and UX.
 
-## Available Scripts
+Required core flow implemented:
+1. Login page (`testuser` / `Test123`)
+2. List page with API data
+3. Details page on employee click
+4. Camera capture and photo result page
 
-In the project directory, you can run:
+Creativity features implemented:
+1. Salary bar chart (first 10 employees)
+2. Real world map with exact geo markers per city
+3. Light/Dark theme toggle (default: dark mode)
 
-### `npm start`
+## Credentials
+1. Username: `testuser`
+2. Password: `Test123`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## API
+Endpoint:
+`https://backend.jotish.in/backend_dev/gettabledata.php`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Request body:
+```json
+{
+  "username": "test",
+  "password": "123456"
+}
+```
 
-### `npm test`
+## Improvements Implemented
+1. Real routing with `react-router-dom`
+2. Protected routes (unauthenticated access blocked)
+3. Login persistence via `localStorage`
+4. Modular architecture (pages/components/contexts/services/utils)
+5. API timeout handling + retry + fallback dataset
+6. Loading skeletons, empty state, and error state
+7. Camera flow fix with safe stream lifecycle
+8. Last captured photo saved per employee
+9. Real geospatial world map (`react-leaflet`) with exact city markers
+10. City click on map filters list view
+11. Accessibility improvements (labels, roles, keyboard-focusable controls)
+12. Performance improvements (`useMemo` + route-level lazy loading)
+13. Unit and integration tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Folder Structure
+```text
+src/
+  components/
+    common/
+    layout/
+    map/
+    routing/
+  constants/
+  contexts/
+  pages/
+  services/
+  utils/
+  __tests__/
+```
 
-### `npm run build`
+## Run Locally
+1. Install dependencies:
+```bash
+npm install
+```
+2. Start dev server:
+```bash
+npm start
+```
+3. Open:
+`http://localhost:3000`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tests
+Run all tests:
+```bash
+npm test -- --watchAll=false
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Production Build
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Reviewer Quick Validation
+1. Open `/login`
+2. Login with `testuser / Test123`
+3. Verify employee list renders
+4. Open any employee details
+5. Start camera, capture photo, verify photo result page
+6. Open Salary Chart and World Map pages
+7. On map, click a city marker and confirm list opens filtered by city
 
-### `npm run eject`
+## Notes
+1. Camera requires browser permission.
+2. If API is unreachable, app automatically shows fallback demo data with a status banner.
+3. Theme defaults to dark mode and can be toggled from the header.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Design/Engineering Decisions
+1. Context providers were used to avoid prop-drilling and keep state predictable.
+2. Employee data fetching is centralized in `EmployeeContext` for retry/fallback consistency.
+3. Map uses exact lat/lng coordinates for deterministic marker positions.
+4. Route-based lazy loading keeps initial load smaller and improves responsiveness.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screenshots
+Add screenshots before final submission:
+1. `screenshots/login.png`
+2. `screenshots/list.png`
+3. `screenshots/details-camera.png`
+4. `screenshots/photo-result.png`
+5. `screenshots/salary-chart.png`
+6. `screenshots/world-map.png`
