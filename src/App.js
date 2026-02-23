@@ -148,7 +148,7 @@ const STYLES = `
 
   .theme-toggle {
     position: fixed;
-    top: 14px;
+    bottom: 18px;
     right: 14px;
     z-index: 9999;
     border: 1px solid var(--border);
@@ -420,9 +420,11 @@ const CITY_GEO = {
   "Austin": { lat: 30.2672, lng: -97.7431 },
   "Jacksonville": { lat: 30.3322, lng: -81.6557 },
   "London": { lat: 51.5072, lng: -0.1276 },
+  "Edinburgh": { lat: 55.9533, lng: -3.1883 },
   "Paris": { lat: 48.8566, lng: 2.3522 },
   "Berlin": { lat: 52.5200, lng: 13.4050 },
   "Tokyo": { lat: 35.6762, lng: 139.6503 },
+  "San Francisco": { lat: 37.7749, lng: -122.4194 },
   "Sydney": { lat: -33.8688, lng: 151.2093 },
   "Mumbai": { lat: 19.0760, lng: 72.8777 },
   "Toronto": { lat: 43.6532, lng: -79.3832 },
@@ -1012,6 +1014,42 @@ export default function App() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  const parseSalary = (value) => {
+    if (typeof value === "number") return value;
+    if (typeof value !== "string") return 0;
+    return Number(value.replace(/[^0-9.-]/g, "")) || 0;
+  };
+
+  const parseTableRows = (rows) =>
+    rows.map((row, index) => {
+      const fullName = row?.[0] || "";
+      const [first_name = "Employee", ...lastParts] = fullName.split(" ").filter(Boolean);
+      const last_name = lastParts.join(" ") || String(index + 1);
+      const city = row?.[2] || "Unknown";
+      const employeeId = row?.[3] || String(index + 1);
+
+      return {
+        id: employeeId,
+        first_name,
+        last_name,
+        email: `${first_name.toLowerCase()}.${last_name.toLowerCase().replace(/\s+/g, "")}@company.com`,
+        phone_number: `+1-555-${String(employeeId).slice(-4).padStart(4, "0")}`,
+        department: row?.[1]?.includes("Accountant") ? "Finance"
+          : row?.[1]?.includes("Engineer") ? "Engineering"
+          : row?.[1]?.includes("Developer") ? "IT"
+          : row?.[1]?.includes("Director") ? "Management"
+          : row?.[1]?.includes("Support") ? "Operations"
+          : row?.[1]?.includes("Sales") ? "Sales"
+          : "Operations",
+        job_title: row?.[1] || "Employee",
+        salary: parseSalary(row?.[5]),
+        city,
+        gender: index % 2 ? "Female" : "Male",
+        employment_status: "Active",
+        date_of_birth: row?.[4] || "1990/01/01",
+      };
+    });
+
   const fetchData = async () => {
     try {
       const res = await fetch("https://backend.jotish.in/backend_dev/gettabledata.php", {
@@ -1020,8 +1058,14 @@ export default function App() {
         body:JSON.stringify({ username:"test", password:"123456" })
       });
       const json = await res.json();
-      const data = json.data || json.employees || json || [];
-      setEmployees(Array.isArray(data) ? data : Object.values(data));
+
+      const tableRows = json?.TABLE_DATA?.data;
+      if (Array.isArray(tableRows) && tableRows.length) {
+        setEmployees(parseTableRows(tableRows));
+      } else {
+        const data = json.data || json.employees || json || [];
+        setEmployees(Array.isArray(data) ? data : Object.values(data));
+      }
     } catch {
       // Demo fallback data
       setEmployees(Array.from({length:20}, (_,i) => ({
