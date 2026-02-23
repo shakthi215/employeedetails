@@ -64,10 +64,10 @@ Place screenshots in a `screenshots/` folder at project root using these names.
 ![Login Screen](/output/Screenshot%202026-02-23%20113340.png)
 
 ### 2) Employee List Screen
-![Employee List Screen](output/Screenshot%2026-02-23%113646.png)
+![Employee List Screen](/output/Screenshot%2026-02-23%113646.png)
 
 ### 3) Details + Camera Screen
-![Details Camera Screen](output/Screenshot%2026-02-23%113712.png)
+![Details Camera Screen](/output/Screenshot%2026-02-23%113712.png)
 
 ### 4) Photo Result Screen
 ![Photo Result Screen](/output/Screenshot%202026-02-23%20113740.png)
