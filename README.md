@@ -69,13 +69,13 @@ Place screenshots in a `screenshots/` folder at project root using these names.
 ### 3) Salary Chart Screen
 ![Details Camera Screen](/output/Screenshot%202026-02-23%20113712.png)
 
-### 4) Photo Result Screen
+### 4) World Map Screen
 ![Photo Result Screen](/output/Screenshot%202026-02-23%20113740.png)
 
 ### 5) Details + Camera Screen
 ![Salary Chart Screen](/output/Screenshot%202026-02-23%20113800.png)
 
-### 6) World Map Screen
+### 6) Photo Result Screen
 ![World Map Screen](/output/Screenshot%202026-02-23%20113847.png)
 
 ## Notes
