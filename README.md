@@ -1,7 +1,7 @@
-# Employee Hub - ReactJS Assessment
+# Employee Hub - ReactJS 
 
 ## Overview
-This app implements the assessment flow in a single-file React app (`src/App.js`) with:
+This app implements the features:
 1. Login page (`testuser` / `Test123`)
 2. List page using API data
 3. Details page for selected employee
@@ -48,7 +48,7 @@ npm start
 npm run build
 ```
 
-## Assignment Checklist
+##  Features
 1. Login validation
 2. API-backed list page
 3. Details page on row/card click
@@ -58,7 +58,6 @@ npm run build
 7. Map visualization (cities)
 
 ## Output Screens
-Place screenshots in a `screenshots/` folder at project root using these names.
 
 ### 1) Login Screen
 ![Login Screen](/output/Screenshot%202026-02-23%20113340.png)
