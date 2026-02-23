@@ -61,22 +61,22 @@ npm run build
 Place screenshots in a `screenshots/` folder at project root using these names.
 
 ### 1) Login Screen
-![Login Screen](screenshots/login.png)
+![Login Screen](/output/Screenshot%202026-02-23%20113340.png)
 
 ### 2) Employee List Screen
-![Employee List Screen](screenshots/list.png)
+![Employee List Screen](output/Screenshot%2026-02-23%113646.png)
 
 ### 3) Details + Camera Screen
-![Details Camera Screen](screenshots/details-camera.png)
+![Details Camera Screen](output/Screenshot%2026-02-23%113712.png)
 
 ### 4) Photo Result Screen
-![Photo Result Screen](screenshots/photo-result.png)
+![Photo Result Screen](/output/Screenshot%202026-02-23%20113740.png)
 
 ### 5) Salary Chart Screen
-![Salary Chart Screen](screenshots/salary-chart.png)
+![Salary Chart Screen](/output/Screenshot%202026-02-23%20113800.png)
 
 ### 6) World Map Screen
-![World Map Screen](screenshots/world-map.png)
+![World Map Screen](/output/Screenshot%202026-02-23%20113847.png)
 
 ## Notes
 1. Camera requires browser permission.
