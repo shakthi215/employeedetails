@@ -1001,7 +1001,7 @@ export default function App() {
 
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
+    return savedTheme === "light" || savedTheme === "dark" ? savedTheme : "light";
   });
   const [screen, setScreen] = useState("login"); // login | list | details | photo | chart | map
   const [employees, setEmployees] = useState([]);
