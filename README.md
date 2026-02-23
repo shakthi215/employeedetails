@@ -10,7 +10,9 @@ This app implements the features:
 Extra features:
 1. Salary bar chart screen
 2. World map screen with exact city markers
-3. Light/Dark theme toggle (default is dark mode)
+3. Light/Dark theme toggle (default is Light mode)
+
+Deployed Link - https://employeehub-roan.vercel.app/
 
 ## API
 Endpoint:
